@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Text;
 using System.Linq;
 
@@ -75,12 +76,12 @@ namespace ProductReviewManagement
                 Console.WriteLine("Product Id:{0}\tCount:{1}", c.ProductId, c.count);
                 result += " " + c.ProductId + " " + c.count + " ";
             }
-           return result;
+            return result;
         }
         public string RetrieveProductIdAndReviews()
         {
             string result = "";
-             AddReviews();
+            AddReviews();
             var res = product.Select(p => new { ProductId = p.ProductId, Review = p.Review }).ToList();
             foreach (var x in res)
             {
@@ -97,6 +98,30 @@ namespace ProductReviewManagement
             var result = (from products in product orderby products.Rating descending select products).Skip(5).ToList();
             IterateMethod(result);
             return result.Count;
+        }
+        public void CreateDataTable(List<ProductReview> list)
+        {
+            AddReviews();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("ProductId");
+            dt.Columns.Add("UserId");
+            dt.Columns.Add("rating");
+            dt.Columns.Add("Reviews");
+            dt.Columns.Add("IsLike");
+            foreach (var d in list)
+            {
+                dt.Rows.Add(d.ProductId, d.UserId, d.Rating, d.Review, d.IsLike);
+            }
+            IterateDataTable(dt);
+        }
+        public void IterateDataTable(DataTable dataTable)
+        {
+            var result = (from table in dataTable.AsEnumerable() select table.Field<string>("ProductId")).ToList();
+            foreach (var x in result)
+            {
+                Console.WriteLine(x);
+            }
+
         }
     }
 }
