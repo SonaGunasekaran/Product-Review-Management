@@ -8,7 +8,7 @@ namespace ProductReviewManagement
         {
             Console.WriteLine("Product Review Management!");
             ReviewManager review = new ReviewManager();
-            Console.WriteLine("1.Add Product Reviews\n2.Retrieve Top three Rated Products\n3.Retrieve Rating Greater than Three\n4.Count the Review for ID");
+            Console.WriteLine("1.Add Product Reviews\n2.Retrieve Top three Rated Products\n3.Retrieve Rating Greater than Three\n4.Count the Review for ID\n5.Retrieve ProductID and Reviews\n6.Skip Top Five");
             Console.WriteLine("Enter the option: ");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
@@ -27,6 +27,9 @@ namespace ProductReviewManagement
                     break;
                 case 5:
                     review.RetrieveProductIdAndReviews();
+                    break;
+                case 6:
+                    review.SkipTopFiveRecords();
                     break;
             }
         }
