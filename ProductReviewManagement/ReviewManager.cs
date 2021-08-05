@@ -89,6 +89,15 @@ namespace ProductReviewManagement
             }
             return result;
         }
+        public int SkipTopFiveRecords()
+        {
+            AddReviews();
+            Console.WriteLine(" ");
+            Console.WriteLine("Skip Top Five Records from the list");
+            var result = (from products in product orderby products.Rating descending select products).Skip(5).ToList();
+            IterateMethod(result);
+            return result.Count;
+        }
     }
 }
 
