@@ -37,7 +37,7 @@ namespace ProductReviewManagement
             product.Add(new ProductReview() { ProductId = 15, UserId = 19, Rating = 6, Review = "Average", IsLike = true });
             product.Add(new ProductReview() { ProductId = 9, UserId = 11, Rating = 10, Review = "Very Good", IsLike = true });
             product.Add(new ProductReview() { ProductId = 16, UserId = 17, Rating = 9, Review = "Good", IsLike = true });
-            product.Add(new ProductReview() { ProductId = 12, UserId = 6, Rating = 1, Review = "Good", IsLike = true });
+            product.Add(new ProductReview() { ProductId = 12, UserId = 6, Rating = 1, Review = "Bad", IsLike = false });
             product.Add(new ProductReview() { ProductId = 18, UserId = 7, Rating = 2, Review = "Bad", IsLike = false });
             IterateMethod(product);
             return product.Count;
@@ -64,6 +64,18 @@ namespace ProductReviewManagement
             var result = (from products in product where (products.Rating > 3) && (products.ProductId == 1 || products.ProductId == 4 || products.ProductId == 9) select products).ToList();
             IterateMethod(result);
             return result;
+        }
+        public string CountReviewUsingID()
+        {
+            string result = "";
+            AddReviews();
+            var countId = product.GroupBy(x => x.ProductId).Select(p => new { ProductId = p.Key, count = p.Count() });
+            foreach (var c in countId)
+            {
+                Console.WriteLine("Product Id:{0}\tCount:{1}", c.ProductId, c.count);
+                result += " " + c.ProductId + " " + c.count + " ";
+            }
+           return result;
         }
     }
 }
