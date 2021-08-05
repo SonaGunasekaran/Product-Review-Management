@@ -49,5 +49,12 @@ namespace TestProductReview
             int actual = review.SkipTopFiveRecords();
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void TestMethodCountIsLikeField()
+        {
+            int expected = 19;
+            int actual = review.CountIsLikeField();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

@@ -35,6 +35,11 @@ namespace ProductReviewManagement
                 case 7:
                     review.CreateDataTable(list);
                     break;
+                case 8:
+
+                    review.CountIsLikeField();
+
+                    break;
             }
         }
     }

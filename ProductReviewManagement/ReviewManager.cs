@@ -99,7 +99,7 @@ namespace ProductReviewManagement
             IterateMethod(result);
             return result.Count;
         }
-        public void CreateDataTable(List<ProductReview> list)
+        public DataTable CreateDataTable(List<ProductReview> list)
         {
             AddReviews();
             DataTable dt = new DataTable();
@@ -113,6 +113,7 @@ namespace ProductReviewManagement
                 dt.Rows.Add(d.ProductId, d.UserId, d.Rating, d.Review, d.IsLike);
             }
             IterateDataTable(dt);
+            return dt;
         }
         public void IterateDataTable(DataTable dataTable)
         {
@@ -122,6 +123,19 @@ namespace ProductReviewManagement
                 Console.WriteLine(x);
             }
 
+        }
+        public int CountIsLikeField()
+        {
+            List<ProductReview> products = new List<ProductReview>();
+            DataTable table = CreateDataTable(products);
+            int count = 0;
+            var result = table.AsEnumerable().Where(x => x.Field<string>("IsLike").Equals("true")).Select(x => x.Field<string>("ProductId")).ToList();
+            foreach (var t in result)
+            {
+                Console.WriteLine(t);
+                count++;
+            }
+            return count;
         }
     }
 }
