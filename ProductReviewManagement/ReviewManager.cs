@@ -1,17 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace ProductReviewManagement
 {
-    class ReviewManager
+    public class ReviewManager
     {
         List<ProductReview> product;
         public ReviewManager()
         {
             product = new List<ProductReview>();
         }
-        public void AddReviews()
+        public int AddReviews()
         {
             product.Add(new ProductReview() { ProductId = 1, UserId = 3, Rating = 5, Review = "Average", IsLike = true });
             product.Add(new ProductReview() { ProductId = 2, UserId = 8, Rating = 10, Review = "Very Good", IsLike = true });
@@ -39,6 +40,7 @@ namespace ProductReviewManagement
             product.Add(new ProductReview() { ProductId = 12, UserId = 6, Rating = 9, Review = "Good", IsLike = true });
             product.Add(new ProductReview() { ProductId = 18, UserId = 7, Rating = 4, Review = "Bad", IsLike = false });
             IterateMethod(product);
+            return product.Count;
         }
         public void IterateMethod(List<ProductReview> products)
         {
@@ -46,6 +48,15 @@ namespace ProductReviewManagement
             {
                 Console.WriteLine("Product Id:{0}\tUser Id:{1}\tRating:{2}\tReview:{3}\tIsLike:{4}", product.ProductId, product.UserId, product.Rating, product.Review, product.IsLike);
             }
+        }
+        public int RetrieveTopThreeRated()
+        {
+            AddReviews();
+            Console.WriteLine(" ");
+            Console.WriteLine("Retieve Top Three Products from the list");
+            var result = (from products in product orderby products.Rating descending select products).Take(3).ToList();
+            IterateMethod(result);
+            return result.Count;
         }
     }
 }
