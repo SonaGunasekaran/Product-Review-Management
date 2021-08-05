@@ -19,6 +19,10 @@ namespace ProductReviewManagement
                 case 2:
                     review.RetrieveTopThreeRated();
                     break;
+               case 3:
+                    
+                    review.RetrieveRatingGreaterThanThree();
+                    break;
 
             }
         }
