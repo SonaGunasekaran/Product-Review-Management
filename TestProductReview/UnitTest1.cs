@@ -56,5 +56,12 @@ namespace TestProductReview
             int actual = review.CountIsLikeField();
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void AverageOfProductRating()
+        {
+            string expected = "1 7 2 10 4 9 7 4 3 6 5 8 6 9 9 7 12 3.5 8 10 14 9 19 4 18 6 10 9 13 9 17 4 15 6 16 9 ";
+            string actual = review.AverageRating();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

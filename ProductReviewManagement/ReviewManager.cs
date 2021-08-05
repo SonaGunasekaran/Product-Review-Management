@@ -137,6 +137,19 @@ namespace ProductReviewManagement
             }
             return count;
         }
+
+        public string AverageRating()
+        {
+            AddReviews();
+            string result = "";
+            var res = product.GroupBy(p => p.ProductId, r => r.Rating).Select(x => new { ProductId = x.Key, Average = x.Average() });
+            foreach (var a in res)
+            {
+                Console.WriteLine("Product Id:{0}\tAverageOfRating:{1}", a.ProductId, a.Average);
+                result += a.ProductId + " " + a.Average + " ";
+            }
+            return result;
+        }
     }
 }
 

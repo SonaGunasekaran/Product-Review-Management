@@ -40,6 +40,11 @@ namespace ProductReviewManagement
                     review.CountIsLikeField();
 
                     break;
+                case 9:
+
+                    review.AverageRating();
+
+                    break;
             }
         }
     }
