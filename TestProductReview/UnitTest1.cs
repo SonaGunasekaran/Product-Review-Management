@@ -35,5 +35,12 @@ namespace TestProductReview
             string actual = review.CountReviewUsingID();
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void TestMethodForProductId()
+        {
+            string expected = "1 2 4 1 7 3 5 4 6 9 12 8 14 6 19 5 18 10 13 17 15 9 16 12 18 ";
+            string actual = review.RetrieveProductIdAndReviews();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

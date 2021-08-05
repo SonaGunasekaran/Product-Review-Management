@@ -25,7 +25,9 @@ namespace ProductReviewManagement
                 case 4:
                     review.CountReviewUsingID();
                     break;
-
+                case 5:
+                    review.RetrieveProductIdAndReviews();
+                    break;
             }
         }
     }

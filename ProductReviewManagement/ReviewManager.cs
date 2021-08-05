@@ -77,6 +77,18 @@ namespace ProductReviewManagement
             }
            return result;
         }
+        public string RetrieveProductIdAndReviews()
+        {
+            string result = "";
+             AddReviews();
+            var res = product.Select(p => new { ProductId = p.ProductId, Review = p.Review }).ToList();
+            foreach (var x in res)
+            {
+                Console.WriteLine("ProductId " + x.ProductId + " " + "Review " + " " + x.Review);
+                result += x.ProductId + " ";
+            }
+            return result;
+        }
     }
 }
 
