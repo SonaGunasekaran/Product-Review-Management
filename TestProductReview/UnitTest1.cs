@@ -28,5 +28,12 @@ namespace TestProductReview
             var actual = review.RetrieveTopThreeRated();
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void TestCountReviewUsingID()
+        {
+            string expected = "1 2  2 1  4 2  7 1  3 1  5 2  6 2  9 2  12 2  8 1  14 1  19 1  18 2  10 1  13 1  17 1  15 1  16 1";
+            string actual = review.CountReviewUsingID();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }
