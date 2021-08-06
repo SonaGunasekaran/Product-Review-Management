@@ -172,7 +172,19 @@ namespace ProductReviewManagement
             }
             Console.WriteLine(count);
             return count;
-
+        }
+        public string RetriveTheRecordOfUserId(int userId)
+        {
+            AddReviews();
+            string result = null;
+            var res = product.OrderByDescending(x => x.Rating).Where(x => x.UserId == userId).ToList();
+            foreach (var r in res)
+            {
+                Console.WriteLine("UserId " + r.UserId + " " + "Rating " + " " + r.Rating);
+                result += r.Rating + " " ;
+            }
+            IterateMethod(res);
+            return result;
         }
     }
 }

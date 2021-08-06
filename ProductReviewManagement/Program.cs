@@ -44,6 +44,9 @@ namespace ProductReviewManagement
                 case 10:
                     review.RetrivingListContainGood();
                     break;
+                case 11:
+                    review.RetriveTheRecordOfUserId(17);
+                    break;
             }
         }
     }
