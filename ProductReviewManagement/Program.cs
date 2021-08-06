@@ -9,7 +9,7 @@ namespace ProductReviewManagement
             Console.WriteLine("Product Review Management!");
             ReviewManager review = new ReviewManager();
             List<ProductReview> list = new List<ProductReview>();
-            Console.WriteLine("1.Add Product Reviews\n2.Retrieve Top three Rated Products\n3.Retrieve Rating Greater than Three\n4.Count the Review for ID\n5.Retrieve ProductID and Reviews\n6.Skip Top Five");
+            Console.WriteLine("1.Add Product Reviews\n2.Retrieve Top three Rated Products\n3.Retrieve Rating Greater than Three\n4.Count the Review for ID\n5.Retrieve ProductID and Reviews\n6.Skip Top Five\n7.Create Data Table\n8.Count IsLike True\n9.Average Rating\n10.Count Reviews Contains Good");
             Console.WriteLine("Enter the option: ");
             int option = Convert.ToInt32(Console.ReadLine());
             switch (option)
@@ -36,14 +36,13 @@ namespace ProductReviewManagement
                     review.CreateDataTable(list);
                     break;
                 case 8:
-
                     review.CountIsLikeField();
-
                     break;
                 case 9:
-
                     review.AverageRating();
-
+                    break;
+                case 10:
+                    review.RetrivingListContainGood();
                     break;
             }
         }

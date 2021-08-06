@@ -63,5 +63,12 @@ namespace TestProductReview
             string actual = review.AverageRating();
             Assert.AreEqual(expected, actual);
         }
+        [TestMethod]
+        public void RetriveProductBasedOnReview()
+        {
+            int expected = 9;
+            var actual = review.RetrivingListContainGood();
+            Assert.AreEqual(expected, actual);
+        }
     }
 }

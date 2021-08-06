@@ -50,6 +50,7 @@ namespace ProductReviewManagement
                 Console.WriteLine("Product Id:{0}\tUser Id:{1}\tRating:{2}\tReview:{3}\tIsLike:{4}", product.ProductId, product.UserId, product.Rating, product.Review, product.IsLike);
             }
         }
+        //UC2----->Retrieve Top three rating
         public int RetrieveTopThreeRated()
         {
             AddReviews();
@@ -59,6 +60,7 @@ namespace ProductReviewManagement
             IterateMethod(result);
             return result.Count;
         }
+        //UC3----->Retrieve Rating Greater than 3
         public List<ProductReview> RetrieveRatingGreaterThanThree()
         {
             AddReviews();
@@ -66,6 +68,7 @@ namespace ProductReviewManagement
             IterateMethod(result);
             return result;
         }
+        //UC4----->Retrieve count of review present for each productID
         public string CountReviewUsingID()
         {
             string result = "";
@@ -78,6 +81,7 @@ namespace ProductReviewManagement
             }
             return result;
         }
+        //UC5------->Retrieve Only Product and Reviews
         public string RetrieveProductIdAndReviews()
         {
             string result = "";
@@ -90,6 +94,7 @@ namespace ProductReviewManagement
             }
             return result;
         }
+        //UC6------->Skip the Top Five Ratings
         public int SkipTopFiveRecords()
         {
             AddReviews();
@@ -99,6 +104,7 @@ namespace ProductReviewManagement
             IterateMethod(result);
             return result.Count;
         }
+        //UC8------>Create Data Table
         public DataTable CreateDataTable(List<ProductReview> list)
         {
             AddReviews();
@@ -124,6 +130,7 @@ namespace ProductReviewManagement
             }
 
         }
+       //UC9------->Retrieve all the records from the datatable variable who’s isLike value is true
         public int CountIsLikeField()
         {
             List<ProductReview> products = new List<ProductReview>();
@@ -137,7 +144,7 @@ namespace ProductReviewManagement
             }
             return count;
         }
-
+        //UC10-------->Find average rating of the each productId
         public string AverageRating()
         {
             AddReviews();
@@ -149,6 +156,23 @@ namespace ProductReviewManagement
                 result += a.ProductId + " " + a.Average + " ";
             }
             return result;
+        }
+        //UC11--------->Retreive all records from the list who’s review message contain good
+        public int RetrivingListContainGood()
+        {
+            AddReviews();
+            string result = " ";
+            int count = 0;
+            var res = product.Select(x => new { Review = x.Review.Equals("Good") }).ToList();
+            foreach (var r in res)
+            {
+                Console.WriteLine("Review " + " " + r.Review);
+                result += r.Review + " ";
+                count++;
+            }
+            Console.WriteLine(count);
+            return count;
+
         }
     }
 }
